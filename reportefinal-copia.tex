@@ -1,0 +1,214 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage[margin=1.5in,includefoot]{geometry}
+\usepackage{fancyhdr}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\renewcommand{\ALG@name}{Algoritmo}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage\ }
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+\end{document}
+
+\begin{titlepage}
+	\begin{center}
+	\line(1, 0){300}\\
+	[5mm]
+	\LARGE{\bfseries Evaluación de Algoritmos Genéticos Aplicados a la Resolución del Problema de Generación de Horarios}\\
+	\line(1, 0){200}\\
+	[5mm]
+	\end{center}
+	\begin{flushright}
+	\textsc{\textit {Autor:}}\\
+	\large {Daniel Alberto Alegría Sánchez}\\
+	[5mm]
+	\textsc{\textit {Asesor Interno:}}\\
+	\large {M.C. Néstor Antonio Morales Navarro}\\
+	[2mm]
+	\textsc{\textit {Asesor Externo:}}\\
+	\large {M.C. Noel Rodriguez Maya}\\
+	[1cm]
+	\end{flushright}
+	\begin{center}
+	\begin{figure}[h]
+		\includegraphics[scale=0.2]{logo.png}
+		\centering
+	\end{figure}
+	\LARGE{Reporte Final de Residencia Profesional}\\
+	[2mm]
+	\textsc{\Large{Instituto Tecnológico de Tuxtla Gutiérrez}}\\	
+	[2mm]
+	\Large{Ingeniería en Sistemas Computacionales}\\
+	\end{center}
+	\begin{flushright}
+	\textsc{\large{2 de Febrero de 2017}}
+	\end{flushright}
+\end{titlepage}
+\renewcommand{\contentsname}{Contenido}
+\tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+
+\setcounter{page}{1}
+
+\section{Justificación}\label{sec:just}
+La calendarización de horarios es una tarea compleja. Esta tarea implica crear relaciones entre grupos y maestros, después distribuir estas relaciones entre diferentes salones y en diferentes espacios de tiempos. Esto tratando de evitar al máximo las superposiciones entre maestros, grupos y salones de clase. 
+
+El realizar este proceso de manera manual, se expone a que el resultado no sea optimo, sin mencionar de que es una tarea tediosa para el o los encargados de realizarla, por lo que lo recomendable es utilizar herramientas que faciliten este proceso, y optimicen el resultado final.
+
+Para resolver este problema, a través de los años los investigadores han abordado varios métodos, como métodos de programación lineal, métodos de coloreo de grafos, métodos de satisfacción de restricciones, métodos de optimización de colonia de hormigas, entre otros \cite{babaei2015} \cite{schaerf1999}.
+
+Ademas de los métodos ya mencionados, se encuentran también los métodos de soluciones basados en poblaciones, entre los que se encuentran: algoritmos evolutivos, algoritmos de colonias de abejas, algoritmos de optimización por cúmulo de partículas y algoritmos genéticos.
+
+La generación de horarios utilizando este tipo de herramientas varia en torno a la representación que se le da al problema, por ejemplo, un horario para una universidad es diferente al de una escuela normal, incluso, la forma en que los horarios se representan varian de universidad a universidad. Ciertas universidades crean módulos de cuatro horas por materia, mientras que otras crean módulos de una o dos horas.
+
+Ademas de estas variaciones, se tiene que tomar en cuenta los parámetros de estas herramientas, en el caso de algoritmos genéticos se tiene que contar al menos seis parámetros diferentes. Estos son: numero de población, máximo de generaciones, porcentaje de cruza, porcentaje de muta, método de selección, entre otros.
+
+Este trabajo pretende analizar cada uno de los problemas implicados en la generación de horarios, ademas de evaluar cada uno de los parámetros utilizados por los algoritmos genéticos, esto con la finalidad de encontrar una configuración optima que se adecue a las necesidades del Instituto Tecnológico de Tuxtla Gutiérrez.
+\newpage
+\section{Objetivos}\label{sec:obj}
+\subsection{Objetivo General}\label{sub:obj1}
+Desarrollar una comparativa entre el rendimiento de diferentes configuraciones de algoritmos genéticos orientados al momento de resolver el problema de generación de horarios de manera que se aprecie las características de cada horario generado con el fin de observar cual configuración es mas optima.
+
+\subsection{Objetivos Específicos}\label{sub:obj2}
+\begin{itemize}
+	\item Analizar el estado del arte referente a resolución del problema de horarios utilizando algoritmos genéticos
+	\item Describir detalladamente el problema de generación de horarios
+	\item Identificar métodos de selección y mutación mas utilizados en algoritmos genéticos
+	\item Identificar porcentajes de cruza y mutación mas utilizados en algoritmos genéticos
+	\item Obtener datos escolares para generar horarios
+	\item Construir algoritmos de acuerdo a los datos recolectados
+	\item Recolectar información de cada algoritmo al momento de generar el horario
+	\item Graficar datos
+	\item Crear cuadro comparativo en donde se puedan observar los datos obtenidos
+\end{itemize}
+\cleardoublepage
+\section{Problemática a Resolver}\label{sec:prob}
+El Instituto Tecnológico de Tuxtla Gutiérrez es una institución educativa que actualmente ofrece nueve licenciaturas, dos maestrías, dos doctorados. Esta institución brinda clases a alrededor de 5000 alumnos, estos están distribuidos en dos turnos: matutino y vespertino. También tiene en su curricula a mas de 200 docentes, cada uno especializado en una cierta area de estudios. Para cubrir las necesidades especificas de ciertas carreras, el ITTG cuenta con laboratorios especializados, como son laboratorios de Física, Química, Mecánica, Eléctrica, entre otros. 
+
+Cada semestre se tiene que elaborar un horario para cada grupo de alumnos de esta institución. Este horario debe de tener en cuenta, ademas de las características ya descritas, las preferencias de horarios de los maestros, las restricciones de horarios de los alumnos y las restricciones de cada salon de clases.
+
+El proceso de elaborar estos horarios es una tarea compleja, que aun se hace de manera manual. Debido al número de restricciones, el resultado no siempre es optimo, y es frecuente que existan sobrecargas de trabajo para los profesores, sobrecargas de horas para los alumnos, choques entre horarios, salones no acondicionados para el grupo o materia asignado, etc.
+\cleardoublepage
+\section{Procedimiento y descripción de las actividades realizadas}\label{sec:desc}
+\subsection{Obtención de datos de la institución}\label{ssec:datos}
+Los datos para realizar este trabajo se obtuvieron de parte del Ing. Juan José Arreola Ordaz a través de una solicitud.
+
+Como los datos en esta lista son muy extensos, después de obtenerla se procedió a ordenarla. Para esto primero se tomaron las materias propias de cada carrera, después se ordenaron por semestres. A partir de la información restante se obtuvo una lista de maestros, así como de sus respectivas materias y horas de trabajo.
+
+Con el fin de facilitar la manipulación de estos datos, estos se almacenaron en una base de datos en MySQL.
+
+Para simplificar el trabajo, durante el proyecto se trabajo solo con datos de la carrera de Ingeniería en Sistemas Computacionales.
+\subsection{Elaboración del algoritmo genético}\label{ssec:elga}
+\subsubsection{Codificación de los individuos}\label{sssec:cod}
+Para la codificación de los individuos se tuvieron en cuenta varias representaciones. La primera fue de la forma $$I = \{C, L, T_1...T_n, Cl_1..Cl_n\}$$ en donde $C$ representa el curso, $L$ el maestro asignado, $T$ el conjunto de horas asignadas y $Cl$ el salon de clases, teniendo en cuenta que para ambos casos, $T$ y $Cl$, $n$ representa el numero de horas correspondiente al curso.
+
+El principal problema encontrado con esta codificación es que no podría saber con certeza cuando se presentarían choques entre salones, maestros y cursos, por lo que fue descartada. 
+
+La segunda codificación que se probo fue una de la forma
+$$
+I = 
+\begin{matrix}
+  & T_{1} & T_{2} & \dots & T_{70}\\
+Cl_{1} & C, L & C, L & \dots & C, L\\
+Cl_{2} &C, L & C, L & \dots & C, L\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+Cl_{n} &C, L & C, L & \dots & C, L\\
+
+\end{matrix}
+$$
+donde $T$ representa a los tiempos, $Cl$ representa los salones de clases y el conjunto $C, L$ representa a las relaciones Curso-Maestro.
+
+Una explicación detallada aclarando la codificación de los individuos se puede encontrar en el anexo \ref{sec:anx}
+
+\subsubsection{Generación inicial de individuos}
+Después de decidirse la manera en que los individuos se codificaran, se busco la forma en que estos se generaran.
+
+Al principio del proyecto se opto por una generación totalmente aleatoria. Después de hacer varias pruebas, esta forma de generación se descarto, ya que se perdía mucho tiempo al momento de evaluar los individuos.  Ademas, no se podia deliberar si el individuo violaba restricciones flexibles o inflexibles. También surgía un problema al momento de realizar la cruza, ya que la mayoría de las veces los nuevos individuos tenían valores de aptitud peores que los de generaciones anteriores, lo que provocaba que el algoritmo nunca alcanzara valores óptimos.
+
+Debido a esto, se tomo la decision de que los individuos serian horarios validos, es decir, que no violaran ninguna de las restricciones inflexibles, y que el algoritmo genético se encargara de tomar estas soluciones validas y convertirlas a soluciones optimas, tratando de minimizar únicamente las restricciones flexibles, ya que, en un problema con tantas restricciones, se corre el riesgo de crear un algoritmo genético que pase la mayor parte del tiempo evaluando individuos no validos \cite{erben1995}.
+
+Un proceso similar se lleva a cabo al momento de generar nuevos individuos a traves de la recombinacion.
+
+\subsubsection{Parametros a evaluar}
+Aunque existen muchos métodos de selección utilizados en los algoritmos genéticos, se decidió evaluar solamente cinco. Estos métodos fueron elegidos ya que  se observo que son los mas utilizados para realizar esta tarea. Los métodos son:
+\begin{itemize}
+	\item Torneo
+	\item Torneo binario
+	\item Rango lineal
+	\item Ruleta
+	\item Muestreo estocástico universal
+\end{itemize}
+
+Cada algoritmo utiliza una cierta probabilidad de mutación. Los parámetros utilizados para este valor son los siguientes
+\begin{itemize}
+	\item 0.1\%
+	\item 0.2\%
+	\item 0.3\%
+	\item 0.4\%
+	\item 0.5\%
+	\item 0.6\%
+	\item 0.7\%
+	\item 0.8\%
+	\item 0.9\%
+	\item 1.0\%
+\end{itemize}
+
+Para el numero de generaciones y el tamaño de población se utilizaron 5 valores entre el 100 y el 500.
+
+\subsubsection{Restricciones}
+Restricciones Inflexibles:
+\begin{itemize}
+	\item Un maestro, grupo o salon de clases no puede tener superposiciones de cualquier tipo
+	\item Las clases para el turno matutino comienzan a las 7am y terminan, como máximo, a las 4pm
+	\item Las clases para el turno vespertino comienzan, como máximo, a las 12pm y terminan a las 9pm
+	\item Los salones de clases debe de cumplir con los requerimientos de la clase asignada
+\end{itemize}
+Restricciones Flexibles:
+\begin{itemize}
+	\item Las horas asignadas para cada maestro deben de estar dentro de su horario de trabajo
+	\item Los grupos y maestros no deberán de contener tiempos muertos
+	\item Las clases deberán de estar dispuestas en módulos de dos horas
+	\item El tamaño de los salones debe de coincidir con el tamaño del grupo asignado
+	\item La distribución de las clases entre los salones debe de ser uniforme
+	\item Todos los maestros deben de tener asignados materias
+\end{itemize}
+
+\subsubsection{Funcion Objetivo}
+Evaluar los individuos que generamos es una tarea critica, ya que de esto depende el resultado final de nuestro algoritmo genético. Debido a que los individuos que generamos no violan las restricciones inflexibles, solo los evaluamos de acuerdo a sus restricciones flexibles.
+
+La función Objetivo se puede representar de la siguiente manera:
+$$F = S + O + T + G$$
+en donde $S$ se representa como la cantidad de salones cuyo tamaño no coincide con el de la clase asignada.
+
+$O$ es la cantidad de salones cuyo porcentaje de disponibilidad esta muy por debajo o por encima de la disponibilidad media. La disponibilidad de un salon se obtiene de la siguiente manera: $$D = \dfrac{70 - clasesAsignadas}{70} * 100$$
+De esta manera, si un salon no tiene ninguna clase asignada su disponibilidad sera $100\%$, por ejemplo.
+
+$T$ requiere de dos valores para calcularlos: $$T = T_1 + T_2$$ donde $T_1$ es la cantidad de maestros a los que no se asignaron materias y $T_2$ es la cantidad de maestros a los que no se les respeto sus horas de trabajo.
+
+$G$ es $$s = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}$$
+
+
+
+\cleardoublepage
+\section{Anexo}\label{sec:anx}
+\cleardoublepage
+\bibliographystyle{IEEEtran}
+\bibliography{/Users/alberto/Desktop/reporte/biblio/refer}
+
+\end{document}

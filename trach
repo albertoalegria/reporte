@@ -1,0 +1,50 @@
+\begin{algorithm}
+\caption{GenerarIndividuo}\label{euclid}
+\begin{algorithmic}[1]
+\State $\textit{stringlen} \gets \text{length of }\textit{string}$
+\State $i \gets \textit{patlen}$
+\BState \emph{top}:
+\If {$i > \textit{stringlen}$} \Return false
+\EndIf
+\State $j \gets \textit{patlen}$
+\BState \emph{loop}:
+\If {$\textit{string}(i) = \textit{path}(j)$}
+\State $j \gets j-1$.
+\State $i \gets i-1$.
+\State \textbf{goto} \emph{loop}.
+\State \textbf{close};
+\EndIf
+\State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
+\State \textbf{goto} \emph{top}.
+\end{algorithmic}
+\end{algorithm}
+
+
+ 
+\begin{algorithm}
+\caption{GenerarIndividuo}\label{euclid}
+\begin{algorithmic}[1]
+\ForEach {$curso \in \mathcal Cursos$}
+	\State $curso \gets maestroAleatorio$
+	\State $i \gets 0$
+	\While {$ i  < tamCurso$}
+		\State $curso \gets posicionValida$
+		\State $horario \gets curso$
+	\EndWhile
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{PosicionValida}\label{euclid}
+\begin{algorithmic}[1]
+\Require $curso$
+\State $PosiblesTiempos \gets Tiempos Libres Curso$
+\State $PosiblesTiempos \gets Tiempos Libres Maestro$
+\State $R \gets Random(0, TamPosiblesTiempos)$
+\State $T \gets Rand(PosiblesTiempos)$
+\While {$T noEsValido$}
+\State $T \gets Rand(PosiblesTiempos)$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
