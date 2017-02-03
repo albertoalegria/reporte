@@ -86,30 +86,42 @@
 	\Large{Ingeniería en Sistemas Computacionales}\\
 	\end{center}
 	\begin{flushright}
-	\textsc{\large{2 de Febrero de 2017}}
+	\textsc{\large{3 de Febrero de 2017}}
 	\end{flushright}
 \end{titlepage}
+
 \renewcommand{\contentsname}{Contenido}
 \tableofcontents
 \thispagestyle{empty}
 \cleardoublepage
 
+\pagenumbering{Roman}
+
+\renewcommand\listfigurename{Lista de Imágenes}
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}Lista de Imágenes}
+\cleardoublepage
+
+\renewcommand\listtablename{Lista de Tablas}
+\listoftables
+\addcontentsline{toc}{section}{\numberline{}Lista de Tablas}
+\cleardoublepage
+
+\pagenumbering{arabic}
+
 \setcounter{page}{1}
 
 \section{Justificación}\label{sec:just}
-La calendarización de horarios es una tarea compleja. Esta tarea implica crear relaciones entre grupos y maestros, después distribuir estas relaciones entre diferentes salones y en diferentes espacios de tiempos. Esto tratando de evitar al máximo las superposiciones entre maestros, grupos y salones de clase. 
 
-El realizar este proceso de manera manual, se expone a que el resultado no sea optimo, sin mencionar de que es una tarea tediosa para el o los encargados de realizarla, por lo que lo recomendable es utilizar herramientas que faciliten este proceso, y optimicen el resultado final.
+La calendarización de horarios esta presente en varios sectores de la sociedad, desde los transportes y trabajo hasta en las escuelas. Esta actividad es conocida por representar una alta complejidad al momento de realizarse, ya que se busca que los recursos que se necesiten calendarizar estén distribuidos de una manera optima y eficiente. Es por esto que este problema se aborda como un problema de optimización.En el caso de horarios para escuelas, los recursos manejados son maestros, aulas y alumnos. El objetivo es distribuir a estos en un horario de manera que ninguno quede fuera de este, pero también que su inclusión no sea problemática para los demás recursos, por ejemplo, no se podrá asignar un maestro para dos grupos diferentes el mismo día y a la misma hora.Como es de suponerse, la realización manual de estos horarios implica un gran numero de dificultades, ya que se trata de manejar muchas restricciones a la par de un gran numero de variables. Esto conlleva a que el proceso manual sea muy lento e impreciso para el horario y muy tedioso para el encargado de dicha labor.Debido a esto han sido muchas las aportaciones que se han hecho a la generación automática de horarios \cite{schaerf1999, babaei2015}. Esta tarea ha sido abordada desde varias perspectivas, principalmente algoritmos heurísticos. Dentro de estos algoritmos sobresalen los algoritmos evolutivos, que se basan en el proceso de reproducción y selección natural para resolver problemas de optimización, como es el caso del problema de horarios.
 
-Para resolver este problema, a través de los años los investigadores han abordado varios métodos, como métodos de programación lineal, métodos de coloreo de grafos, métodos de satisfacción de restricciones, métodos de optimización de colonia de hormigas, entre otros \cite{babaei2015} \cite{schaerf1999}.
+El Instituto Tecnológico de Tuxtla Gutiérrez es una institución educativa que actualmente ofrece nueve licenciaturas, dos maestrías y dos doctorados. Esta institución brinda clases a alrededor de 5000 alumnos, estos están distribuidos en dos turnos: matutino y vespertino. También tiene en su currículo a mas de 200 docentes, cada uno especializado en una cierta área de estudios. Para cubrir las necesidades especificas de ciertas carreras, el ITTG cuenta con laboratorios especializados, como son laboratorios de Física, Química, Mecánica, Eléctrica, entre otros. 
 
-Ademas de los métodos ya mencionados, se encuentran también los métodos de soluciones basados en poblaciones, entre los que se encuentran: algoritmos evolutivos, algoritmos de colonias de abejas, algoritmos de optimización por cúmulo de partículas y algoritmos genéticos.
+Cada semestre se tiene que elaborar un horario para cada grupo de alumnos de esta institución. Este horario debe de tener en cuenta, además de las características ya descritas, las preferencias de horarios de los maestros, las restricciones de horarios de los alumnos y las restricciones de cada salón de clases.
 
-La generación de horarios utilizando este tipo de herramientas varia en torno a la representación que se le da al problema, por ejemplo, un horario para una universidad es diferente al de una escuela normal, incluso, la forma en que los horarios se representan varian de universidad a universidad. Ciertas universidades crean módulos de cuatro horas por materia, mientras que otras crean módulos de una o dos horas.
+Como se menciono anteriormente, el proceso de generar horarios es una tarea que esta expuesta a errores, sobretodo si se hace de manera manual.
 
-Ademas de estas variaciones, se tiene que tomar en cuenta los parámetros de estas herramientas, en el caso de algoritmos genéticos se tiene que contar al menos seis parámetros diferentes. Estos son: numero de población, máximo de generaciones, porcentaje de cruza, porcentaje de muta, método de selección, entre otros.
-
-Este trabajo pretende analizar cada uno de los problemas implicados en la generación de horarios, ademas de evaluar cada uno de los parámetros utilizados por los algoritmos genéticos, esto con la finalidad de encontrar una configuración optima que se adecue a las necesidades del Instituto Tecnológico de Tuxtla Gutiérrez.
+Es por esta razón que se cree que es conveniente que esta institución cuente con una herramienta que permita hacer esta tarea, minimizando los errores y reduciendo el tiempo en que es llevada a cabo.
 \newpage
 \section{Objetivos}\label{sec:obj}
 \subsection{Objetivo General}\label{sub:obj1}
@@ -129,24 +141,53 @@ Desarrollar una comparativa entre el rendimiento de diferentes configuraciones d
 \end{itemize}
 \cleardoublepage
 \section{Problemática a Resolver}\label{sec:prob}
-El Instituto Tecnológico de Tuxtla Gutiérrez es una institución educativa que actualmente ofrece nueve licenciaturas, dos maestrías y dos doctorados. Esta institución brinda clases a alrededor de 5000 alumnos, estos están distribuidos en dos turnos: matutino y vespertino. También tiene en su curricula a mas de 200 docentes, cada uno especializado en una cierta area de estudios. Para cubrir las necesidades especificas de ciertas carreras, el ITTG cuenta con laboratorios especializados, como son laboratorios de Física, Química, Mecánica, Eléctrica, entre otros. 
 
-Cada semestre se tiene que elaborar un horario para cada grupo de alumnos de esta institución. Este horario debe de tener en cuenta, ademas de las características ya descritas, las preferencias de horarios de los maestros, las restricciones de horarios de los alumnos y las restricciones de cada salon de clases.
 
-El proceso de elaborar estos horarios es una tarea compleja, que aun se hace de manera manual. Debido al número de restricciones, el resultado no siempre es optimo, y es frecuente que existan sobrecargas de trabajo para los profesores, sobrecargas de horas para los alumnos, choques entre horarios, salones no acondicionados para el grupo o materia asignado, etc.
+La idea de resolver el problema de generación de horarios surge en los años 60's con la publicación de artículos que proponían el uso de la computadora como herramienta de apoyo en la resolución de este problema.
+
+Los primeros trabajos presentaban la solución a través de un proceso muy similar al realizado manualmente. Estos también se caracterizaban por no poder transmitir de manera apropiada el enfoque heurístico que utilizaban, además de solo generar una solución \cite{appleby1961}.
+
+El primer intento no heurístico fue propuesto por C. Gotlieb en 1963, este trabajo describía la generación de horarios por medio de un proceso de reducción de disponibilidades.
+
+El algoritmo desarrollado detectaba asignaciones estrictas y disponibilidades a través de problemas de menor complejidad. Enfocándose en un solo participante o en una sola hora se puede obtener una sección bidimensional que representa un problema de asignación, en ocasiones revela asignaciones estrictas o disponibilidades e incluso si el problema tiene o no solución. Estas asignaciones o disponibilidades causan disponibilidades o asignaciones adicionales, estableciendo así un proceso iterativo de reducción. Si durante este proceso no se puede demostrar que el problema no tiene solución, el proceso se volverá estacionario, siempre y cuando todas las situaciones sean evaluadas. El resultado es llamado Arreglo de Disponibilidades Reducidas \cite{gotlieb1963}.
+
+En 1993, \cite{colorni1993} compara el proceso de programación de horarios con dos versiones de un algoritmo genético (con y sin búsqueda binaria), el método de recocido simulado y el de búsqueda tabú contra horarios programados manualmente. Además presenta un modelo y una estructura jerárquica en la función objetivo y los operadores genéticos que se aplicaran a las matrices que representan el horario.
+
+Los autores enlistan las dificultades que surgen al resolver problemas de optimización combinatoria con algoritmos genéticos. Las mas relevantes surgen al momento de aplicar los operadores genéticos, ya que esto puede dar lugar a soluciones erróneas. Para evitar esto proponen las siguientes soluciones:
+
+\begin{itemize}
+\item Cambiar la representación de la solución de manera que el operador de cruza pueda aplicarse consistentemente
+\item Crear operadores de mutación que puedan generar únicamente soluciones factibles
+\item Aplicar operadores de mutación y cruza para después de realizar un proceso de reparación genética que convierta soluciones infactibles en soluciones factibles a través del uso de un algoritmo de filtrado
+\end{itemize}
+
+Además enlistan la manera en que las restricciones son manejadas, esto con el fin de generar mejores soluciones en cada generación. El manejo de restricciones se hace de la siguiente forma:
+\begin{itemize}
+\item Por los operadores genéticos, para que el conjunto de horas asignadas a un maestro no sea cambiada por los operadores de cruza y muta
+\item Por el algoritmo de filtrado, así los errores generados por los operadores genéticos son eliminados, total o parcialmente
+\item Por la función objetivo, así se limita la selección de individuos con soluciones factibles, de manera que entre menos apto sea el individuo, mayor sea su penalización
+\end{itemize}
+
+Como se puede apreciar, la calendarización de horarios es una tarea compleja. y el realizar este proceso de manera manual, se expone a que el resultado no sea optimo, sin mencionar de que es una tarea tediosa para el o los encargados de realizarla, por lo que lo recomendable es utilizar herramientas que faciliten este proceso, y optimicen el resultado final.
+
+La generación de horarios utilizando este tipo de herramientas varia en torno a la representación que se le da al problema, por ejemplo, un horario para una universidad es diferente al de una escuela normal, incluso, la forma en que los horarios se representan varían de universidad a universidad. Ciertas universidades crean módulos de cuatro horas por materia, mientras que otras crean módulos de una o dos horas.
+
+Además de estas variaciones, se tiene que tomar en cuenta los parámetros de estas herramientas, en el caso de algoritmos genéticos se tiene que contar al menos seis parámetros diferentes. Estos son: numero de población, máximo de generaciones, porcentaje de cruza, porcentaje de muta, método de selección, entre otros.
+
+Este trabajo pretende analizar cada uno de los problemas implicados en la generación de horarios, además de evaluar cada uno de los parámetros utilizados por los algoritmos genéticos, esto con la finalidad de encontrar una configuración optima que se adecue a las necesidades del Instituto Tecnológico de Tuxtla Gutiérrez.
+
 \cleardoublepage
 \section{Procedimiento y descripción de las actividades realizadas}\label{sec:desc}
-El desarrollo del proyecto se dividió en cinco partes: 
+El desarrollo del proyecto se dividió en cuatro partes: 
 \begin{enumerate}
 	\item Obtención de datos
 	\item Ordenación de datos
-	\item Desarrollo del algoritmo genetico
+	\item Desarrollo del algoritmo genético
 	\item Obtención de resultados
-	\item Presentación de resultados
 \end{enumerate}
-Hay que indicar que la parte de obtención de datos ya se habia hecho antes de iniciar la residencia profesional. Este semestre se trato de obtener datos actualizados, pero no fue posible.
+Hay que indicar que la parte de obtención de datos ya se había hecho antes de iniciar la residencia profesional. Este semestre se trato de obtener datos actualizados, pero no fue posible.
 \subsection{Obtención de datos}\label{ssec:datos}
-Par obtener los datos primero se acudió con el jefe de la División de Estudios Superiores, el Ing. Juan José Arreola. Esta división es la que, entre otras actividades, se encarga de de realizar los horarios cada semestre. Para poder entregar los datos requeridos, esta division pidió que se proporcionara un escrito de nuestra parte, en donde se indicase el nombre del proyecto, el nombre de las personas encargadas de desarrollarlo, el objetivo del proyecto y los datos requeridos.
+Par obtener los datos primero se acudió con el jefe de la División de Estudios Superiores, el Ing. Juan José Arreola. Esta división es la que, entre otras actividades, se encarga de de realizar los horarios cada semestre. Para poder entregar los datos requeridos, esta división pidió que se proporcionara un escrito de nuestra parte, en donde se indicase el nombre del proyecto, el nombre de las personas encargadas de desarrollarlo, el objetivo del proyecto y los datos requeridos.
 
 Los datos requeridos eran:
 
@@ -159,16 +200,16 @@ Los datos requeridos eran:
 Despues de entregar este escrito, la División de Estudios Superiores nos facilito en un archivo los datos que se requerían. 
 
 \subsection{Ordenación de los datos}
-El archivo proporcionado por la Division era un horario de un semestre anterior. Este horario era el horario general del ITTG. Lo que se hizo en esta etapa fue extraer unicamente los datos que se necesitaban.
+El archivo proporcionado por la Division era un horario de un semestre anterior. Este horario era el horario general del ITTG. Lo que se hizo en esta etapa fue extraer únicamente los datos que se necesitaban.
 
 Aunque se pudieron extraer los nombres de los maestros, no hubo forma de obtener sus horarios de entrada y de salida, por lo que lo que se hizo fue obtener la primer y la ultima hora en que se le asignaban clases. Esto nos dio el rango de trabajo de cada maestro.
 
-Aunque los datos ya ordenados contenian informacion de todo el ITTG, para el desarrollo del proyecto se utilizo solamente datos de la carrera de Ingeniería en Sistemas Computacionales.
+Aunque los datos ya ordenados contenían información de todo el ITTG, para el desarrollo del proyecto se utilizo solamente datos de la carrera de Ingeniería en Sistemas Computacionales.
 
 \subsection{Desarrollo del algoritmo genético}\label{ssec:elga}
-El algoritmo fue desrrollado en Java, utilizando MySQL para el manejo de base de datos. Al principio se penso en utilizar la librería ECJ, que es una librería especializada en computo evolutivo, pero debido a que los metodos de seleccion, la mutacion y la cruza ya estaban escritos unicamente Java, esta idea se descarto.
+El algoritmo fue desarrollado en Java, utilizando MySQL para el manejo de base de datos. Al principio se pensó en utilizar la librería ECJ, que es una librería especializada en computo evolutivo, pero debido a que los métodos de selección, la mutación y la cruza ya estaban escritos en Java, esta idea se descarto.
 \subsubsection{Codificación de los individuos}\label{sssec:cod}
-Para la codificación de los individuos se tuvieron en cuenta varias representaciones. La primera fue de la forma $$I = \{C, L, T_1...T_n, Cl_1..Cl_n\}$$ en donde $C$ representa el curso, $L$ el maestro asignado, $T$ el conjunto de horas asignadas y $Cl$ el salon de clases, teniendo en cuenta que para ambos casos, $T$ y $Cl$, $n$ representa el numero de horas correspondiente al curso.
+Para la codificación de los individuos se tuvieron en cuenta varias representaciones. La primera fue de la forma $$I = \{C, L, T_1...T_n, Cl_1..Cl_n\}$$ en donde $C$ representa el curso, $L$ el maestro asignado, $T$ el conjunto de horas asignadas y $Cl$ el salón de clases, teniendo en cuenta que para ambos casos, $T$ y $Cl$, $n$ representa el numero de horas correspondiente al curso.
 
 El principal problema encontrado con esta codificación es que no podría saber con certeza cuando se presentarían choques entre salones, maestros y cursos, por lo que fue descartada. 
 
@@ -191,13 +232,13 @@ Una explicación detallada aclarando la codificación de los individuos se puede e
 \subsubsection{Generación inicial de individuos}\label{sssec:gen}
 Después de decidirse la manera en que los individuos se codificaran, se busco la forma en que estos se generaran.
 
-Al principio se opto por una generación totalmente aleatoria. Después de hacer varias pruebas, esta forma de generación se descarto, ya que se perdía mucho tiempo al momento de evaluar los individuos.  Ademas, no se podia deliberar si el individuo violaba restricciones flexibles o inflexibles. También surgía un problema al momento de realizar la cruza, ya que la mayoría de las veces los nuevos individuos tenían valores de aptitud peores que los de generaciones anteriores, lo que provocaba que el algoritmo nunca alcanzara valores óptimos.
+Al principio se opto por una generación totalmente aleatoria. Después de hacer varias pruebas, esta forma de generación se descarto, ya que se perdía mucho tiempo al momento de evaluar los individuos.  Además, no se podía deliberar si el individuo violaba restricciones flexibles o inflexibles. También surgía un problema al momento de realizar la cruza, ya que la mayoría de las veces los nuevos individuos tenían valores de aptitud peores que los de generaciones anteriores, lo que provocaba que el algoritmo nunca alcanzara valores óptimos.
 
-Debido a esto, se tomo la decision de que los individuos serian horarios validos, es decir, que no violaran ninguna de las restricciones inflexibles, y que el algoritmo genético se encargara de tomar estas soluciones validas y convertirlas a soluciones optimas, tratando de minimizar únicamente las restricciones flexibles, ya que, en un problema con tantas restricciones, se corre el riesgo de crear un algoritmo genético que pase la mayor parte del tiempo evaluando individuos no validos \cite{erben1995}.
+Debido a esto, se tomo la decisión de que los individuos serian horarios validos, es decir, que no violaran ninguna de las restricciones inflexibles, y que el algoritmo genético se encargara de tomar estas soluciones validas y convertirlas a soluciones optimas, tratando de minimizar únicamente las restricciones flexibles, ya que, en un problema con tantas restricciones, se corre el riesgo de crear un algoritmo genético que pase la mayor parte del tiempo evaluando individuos no validos \cite{erben1995}.
 
 Un proceso similar se lleva a cabo al momento de generar nuevos individuos a través de la recombinación y la mutación.
 
-\subsubsection{Parametros a evaluar}
+\subsubsection{Parámetros a evaluar}
 Aunque existen muchos métodos de selección utilizados en los algoritmos genéticos, se decidió evaluar solamente cinco. Estos métodos fueron elegidos ya que  se observo que son los mas utilizados para realizar esta tarea. Los métodos son:
 \begin{itemize}
 	\item Torneo
@@ -226,7 +267,7 @@ Para el numero de generaciones y el tamaño de población se utilizaron 5 valores 
 \subsubsection{Restricciones}
 Restricciones Inflexibles:
 \begin{itemize}
-	\item Un maestro, grupo o salon de clases no puede tener superposiciones de cualquier tipo
+	\item Un maestro, grupo o salón de clases no puede tener superposiciones de cualquier tipo
 	\item Las clases para el turno matutino comienzan a las 7am y terminan, como máximo, a las 4pm
 	\item Las clases para el turno vespertino comienzan, como máximo, a las 12pm y terminan a las 9pm
 	\item Los salones de clases debe de cumplir con los requerimientos de la clase asignada
@@ -248,8 +289,8 @@ La función Objetivo se puede representar de la siguiente manera:
 $$F = S + O + T + G$$
 en donde $S$ se representa como la cantidad de salones cuyo tamaño no coincide con el de la clase asignada.
 
-$O$ es la cantidad de salones cuyo porcentaje de disponibilidad esta muy por debajo o por encima de la disponibilidad media. La disponibilidad de un salon se obtiene de la siguiente manera: $$D = \dfrac{70 - clasesAsignadas}{70} * 100$$
-De esta manera, si un salon no tiene ninguna clase asignada su disponibilidad sera $100\%$, por ejemplo.
+$O$ es la cantidad de salones cuyo porcentaje de disponibilidad esta muy por debajo o por encima de la disponibilidad media. La disponibilidad de un salón se obtiene de la siguiente manera: $$D = \dfrac{70 - clasesAsignadas}{70} * 100$$
+De esta manera, si un salon no tiene ninguna clase asignada su disponibilidad será $100\%$, por ejemplo.
 
 $T$ requiere de dos valores para calcularlos: $$T = T_1 + T_2$$ donde $T_1$ es la cantidad de maestros a los que no se asignaron materias y $T_2$ es la cantidad de maestros a los que no se les respeto sus horas de trabajo.
 
@@ -259,7 +300,7 @@ Por ejemplo:
 \textit{El grupo $S2A$ tiene 5 clases el día lunes. Estas clases son las siguientes:}
 
 \begin{center}
-\captionof{table}{Ejemplo 1}
+\captionof{table}[Ejemplo de horario 1]{Ejemplo 1}
 	\begin{tabular}{| l | l |}
 	\hline
 	Materia & Hora \\ \hline
@@ -270,7 +311,7 @@ Por ejemplo:
 	\hline
 	\end{tabular}
 	
-	\captionof{table}{Ejemplo 2}
+	\captionof{table}[Ejemplo de horario 2]{Ejemplo 2}
 	\begin{tabular}{| l | l |}
 	\hline
 	Materia & Hora \\ \hline
@@ -284,9 +325,88 @@ Por ejemplo:
 \end{center}
 
 Las diferencias entre las horas para el primer ejemplo son las siguientes: 1, 4 y 1, por lo tanto, $\sigma =  1.41$. Este caso se penalizaría. Las diferencias entre las horas del segundo ejemplo son 1,2,1, por lo tanto $\sigma = 0.47$. Este caso no se penalizaría ya que, aunque las horas no son consecutivas, solo hay una hora libre.
+
+\subsubsection{Cruza}
+El método de cruza utilizado es el de un punto. 
+
+En este método se selecciona un punto aleatorio dentro de los genes del individuo. Después se intercambian los genes de los padres a partir de este punto generando así dos nuevos individuos \cite{alabsi2012}.
+
+Este operador también se encarga de que los nuevos individuos sean validos, al no violar ninguna restricción inflexible. 
+
+\subsubsection{Mutación}
+El método de mutación utilizado es mutación uniforme \cite{soni2014}.
+
+Cuando la mutación ocurre, el gen seleccionado es dado un valor nuevo. En este caso se entiende como gen a una relación maestro-curso dentro del horario generado que cuando es mutado recibe una nueva posición.
+
+\subsection{Obtención de resultados}
+Esta etapa del trabajo se dividió en dos partes. Primero obtendríamos el valor adecuado para el tamaño de población, el numero de generaciones y el método de selección, después se obtendría el valor para el porcentaje de mutación.
+
+\subsubsection{Obtención de tamaño de población, numero de generaciones y método de selección}
+Al principio se tenia planeado hacer una comparativa con 6 tamaños de población y 5 números de generaciones, pero al ver que el algoritmo alcanzaba resultados óptimos en el primer experimento, solo se probó con un numero de generaciones. 
+
+En total en esta etapa se trabajo con 30 variaciones del algoritmo, cada variación se ejecuto 5 veces para poder sacar un promedio en el valor de aptitud final.
+
+\subsubsection{Obtención del porcentaje de mutación}
+Una vez que se obtuvieron los valores anteriores solo quedaba descubrir el mejor porcentaje de mutación. Para esto se crearon diez variaciones del algoritmo y estas fueron ejecutadas 5 veces para poder sacar un promedio.
 \cleardoublepage
 
 \section{Resultados}
+Esta etapa del proyecto se dividió en dos partes. La primera consiste en elegir que método de selección y tamaño de población dan mejores resultados, y la segunda es ver que porcentaje de mutación es el mas optimo.
+
+Originalmente se tenia pensado evaluar el numero de generaciones, los valores que se iban a evaluar eran 100, 200, 300, 400 y 500. Esto ya no fue necesario, ya que después de hacer el experimento con un numero de generaciones de 100, los resultados obtenidos eran muy óptimos.
+
+ \begin{figure}[h]
+ \centering
+	\includegraphics[scale=0.5,angle=-90]{plot.eps}
+	\caption[Comparativa de métodos de selección]{Comparación del rendimiento de cinco diferentes métodos de selección con varios tamaños de población. Los tamaños de población utilizados fueron 50, 100, 200, 300, 400 y 500. El eje Y representa la aptitud media del mejor individuo.}
+\end{figure}
+ 
+ \begin{center}
+	\begin{tabular}{| l | l | l | l | l | l |}
+	\hline
+	Tamaño de poblacion & Torneo & Rango & Ruleta & Torneo binario & Muestreo Estocástico \\ \hline
+	50 & 2.4 & 2.6 & 5.2 & 3.2 & 4.2\\ \hline
+	100 & 2 & 2 & 4.3 & 2.6 & 3.8\\ \hline
+	200 & 1.6 & 1.4 & 4 & 2.4 & 3.2\\ \hline
+	300 & 1.2 & 1.2 & 4 & 2 & 2.6\\ \hline
+ 	400 & 0.8 & 1 & 3.8 & 1.4 & 1.4\\ \hline
+	500 & 0.2 & 0.6 & 3.6 & 0.6 & 0.4\\
+	\hline
+	\end{tabular}
+	\captionof{table}[Resultados de métodos de selección]{Tabla con los valores de cada método de selección}
+ \end{center}
+
+
+ Como se puede observar, el método de selección que peor rendimiento tiene es el de ruleta, mientras que el que mejor tiene es el de torneo. Cabe destacar que el método de muestreo estocástico universal comienza con un valor similar al método de la ruleta, pero conforme el numero de población aumenta, el rendimiento también aumenta hasta el punto de que la aptitud media de su mejor individuo es similar al del método de selección por torneo.
+
+El siguiente paso fue de evaluar al mejor método de selección con varios porcentajes de mutación. Los resultados fueron los siguientes: 
+
+ \begin{figure}[!ht]
+ \centering
+	\includegraphics[scale=0.5,angle=-90]{mut.eps}
+	\caption[Comparativa entre diferentes porcentajes de mutación]{Comparación del rendimiento del método de selección por torneo con diferentes valores de mutación. El eje Y representa el valor de aptitud promedio mientras que el eje X representa los porcentajes de mutación.}
+\end{figure}
+ 
+ \begin{center}
+	\begin{tabular}{| l | l |}
+	\hline
+	Porcentaje de mutación & Aptitud media \\ \hline
+	1\% & 0.2\\ \hline
+	2\% & 0.3\\ \hline
+	3\% & 0.2\\ \hline
+	4\% & 0.4\\ \hline
+ 	5\% & 0.5\\ \hline
+	6\% & 0.6\\ \hline
+	7\% & 0.5\\ \hline
+	8\% & 0.7\\ \hline
+ 	9\% & 1.0\\ \hline
+	10\% & 0.8\\
+	\hline
+	\end{tabular}
+	\captionof{table}[Resultados de porcentajes de mutación]{Tabla con la aptitud media del mejor individuo generado con cada porcentaje de mutacion}
+ \end{center}
+
+Como se observa, a menor porcentaje de mutación, mejor valor de aptitud.
 
 \cleardoublepage
 \section{Anexo}\label{sec:anx}
@@ -322,17 +442,16 @@ Después de asignar un maestro, se crean varias copias de este conjunto. Este num
 \end{lstlisting}
 
 \subsubsection{Codificación}
-Cada individuo es representado por un arreglo de dos dimensiones, la dimension de ese arreglo es de $n x 70$, en donde $n$ es dado por el numero de salones que ocuparemos. El numero $70$ es dado por el numero de horas en las que es posible dar clases. En el ITTG la primer hora de clases es a las 7am, mientras que la ultima hora es a las 9pm. Eso da un total de 14 horas, que multiplicadas por 5, ya que las clases son de lunes a viernes, nos da ese resultado.
+Cada individuo es representado por un arreglo de dos dimensiones, la dimensión de ese arreglo es de $n$ x $70$, en donde $n$ es dado por el numero de salones que ocuparemos. El numero $70$ es dado por el numero de horas en las que es posible dar clases. En el ITTG la primer hora de clases es a las 7am, mientras que la ultima hora es a las 9pm. Eso da un total de 14 horas, que multiplicadas por 5, ya que las clases son de lunes a viernes, nos da ese resultado.
 
-Cada posicion de este arreglo se puede definir como una clase en el que no se ha definido ni el curso ni el maestro. Despues de inicalizar el algoritmo, a cada clase se le asigna una posicion. Este valor representa una posicion dentro de este arreglo. Al asignar esta clase a esa posicion, ese espacio dentro del arreglo deja de estar disponible. 
+Cada posición de este arreglo se puede definir como una clase en el que no se ha definido ni el curso ni el maestro. Después de inicializar el algoritmo, a cada clase se le asigna una posición. Este valor representa una posición dentro de este arreglo. Al asignar esta clase a esa posición, ese espacio dentro del arreglo deja de estar disponible. 
 
-A continuacion se hace una representacion mas grafica de esto.
-
+A continuación se hace una representación mas grafica de esto.
  
  \begin{figure}[h]
  \centering
 	\includegraphics{ejemplo.png}
-	\caption{En esta imagen se aprecia un extracto de un individuo. La primer fila de numeros representa la hora y cada fila es un salon. En el caso de la imagen, se representa el rango de horas de 2pm a 6pm para los salones 1, 2, 3 y 4.}	
+	\caption[Ejemplo de codificación]{En esta imagen se aprecia un extracto de un individuo. La primer fila de numeros representa la hora y cada fila es un salón. Se representa el rango de horas de 2pm a 6pm y los salones 1, 2, 3 y 4.}	
 \end{figure}
 
 
@@ -347,79 +466,30 @@ A continuacion se hace una representacion mas grafica de esto.
 	Salon4 & TELCS5B, T08 & TELCS5B, T08 & - & - \\ 
 	\hline
 	\end{tabular}
-\captionof{table}{}
+\captionof{table}[Representación de un horario]{Esta tabla es la representación del horario de la imagen anterior. Cada celda esta formada por el nombre de la clase correspondiente y el identificador del profesor.}
 \end{center}
 
-\subsubsection{Representacion de las horas}
-La forma en que se representaron las horas fue algo crucial en este trabajo ya que hizo mas facil poder visualizar el numero de horas asignadas a grupos o maestros, ademas de poder apreciar de una mejor manera los posibles choques o violaciones.
+\subsubsection{Representación de las horas}
+Para representar las horas se utiliza la idea del tiempo. 
 
-La forma en que las horas se representaron fueron con números del 1 al 70, siendo 1 la primer hora del día lunes, y el 70 la ultima hora del día viernes. A continuación se pone el código con los métodos principales de la clase que se utilizo para la representación de las horas. 
+La idea de un tiempo es sencilla, en lugar de representar la hora en que una clase es impartida como un rango de horas, se representa como una cantidad de horas. 
 
-\begin{lstlisting}[language=Java]
-// Time.java
-/**
- * La clase Time.java permite manejar de forma mas simple nuestras horas. Los valores principales son hour y absHour. El valor hour esta representado por un valor del 1 al 14, mientras que absHour es un valor entre 1 y 70.
- * 
- * @author Alberto Alegria
- */
-public class Time {
-    private int hour;
-    private int absHour;
-    private int shift;
-    private String day;
+Por ejemplo, en vez de decir que la clase $c$ toma lugar los lunes de 7am a 8am, de 8am a 9am, los martes de 8am a 9am y los jueves de 8am a 9am, se dice que esta clase toma lugar en los tiempos 1, 2, 16 y 44. 
 
-    /*
-    * Este constructor recibe 1 parámetro que es un numero entre 1 y 70 representando la hora correspondiente.
-    */
+Un tiempo consta de dos valores, uno absoluto y otro relativo, el valor absoluto es un numero entre el 1 y el 70 mientras que el relativo es un numero entre 1 y 14. 
+El valor absoluto representa al tiempo en comparación a todo el horario, mientras que el relativo lo representa únicamente para un día determinado. 
 
-    public Time(int hour) {
-        this.hour = hour % 14;
-        if (this.hour == 0) {
-            this.hour = 14;     //Esta parte convierte la hora a un numero entre 1 y 14. Este numero representa un hora pero solo de un dia. Si el numero es 1 representa al modulo de 7am a 8am. Si es 14 representa al de 8pm-9pm
-        }
-
-        shift = getShift(this.hour);    //Dependiendo del numero anterior se calcula a que turno pertenece la hora. Si es menor que 7 pertenece al turno matutino, por ejemplo.
-
-        day = getDay(((hour - 1) / 14) + 1); //El día esta representado por un numero del 1 al 5.
-    }
-
-    public int getShift(int hour) {
-        return (hour <= 7) ? Constants.Shift.MORNING : Constants.Shift.AFTERNOON;
-    }
-
-    //Retorna true cuando el otro objeto Time esta en el mismo día que este.
-    public boolean isInSameDay(Time anotherTime) {
-        return this.day.equals(anotherTime.getDay());
-    }
-
-    //Retorna la diferencia entre horas
-    public int getHourDifference(Time anotherTime) {
-        int difference = this.hour - anotherTime.getHour();
-
-        if (difference < 0) {
-            difference = difference * -1;
-        }
-        return difference;
-    }
-    
-    //Retorna la diferencia entre días. Por ejemplo: Si un día esta en lunes y el otro en viernes, retorna 4.
-    public int getDayDifference(Time anotherTime) {
-        int difference = this.dayToInt() - anotherTime.dayToInt();
-
-        if (difference < 0) {
-            difference = difference * -1;
-        }
-
-        return difference;
-    }
-   //Retorna la hora entre 1 y 70. 
-    public int getAbsHour() {
-        return hour + (14 * (dayToInt() - 1));
-    }
-
-}
-\end{lstlisting}
-
+Por ejemplo, el tiempo 1 representa tanto absolutamente como relativamente, el día lunes de 7am a 8am. En comparación, si quisiéramos representar las mismas horas pero para un día diferente, digamos jueves, el valor absoluto seria 43, mientras que el relativo seguiría siendo 1.
+\begin{center}
+	\begin{tabular}{| l | l | l | l | l | l |}
+	\hline
+	Hora & Lunes 7am-8am & \dots & Miercoles 4pm-5pm & \dots & Viernes 8pm-9pm \\ \hline
+	Tiempo Relativo & 1 & \dots & 10 & \dots & 14 \\ \hline
+	Tiempo Absoluto & 1 & \dots & 38 & \dots & 70 \\
+	\hline
+	\end{tabular}
+	\captionof{table}[Ejemplo de representación de tiempos]{Ejemplo de como se representa un tiempo}
+\end{center}
 
 \subsection{Métodos de selección}
 \subsubsection{Torneo}
@@ -475,7 +545,7 @@ private void tournamentSelection() {
 \end{lstlisting}
 
 \subsubsection{Selección por rangos}
-La selección por rangos consiste en ordenar la población de acuerdo a su valor de aptitud, y asignar a cada individuo un valor de acuerdo a su nueva posición con respecto a la población. Por ejemplo, si se encuentra en la primer posición su valor sera de 1, en la segunda ser 2, etc. El código utilizado es el siguiente:
+La selección por rangos consiste en ordenar la población de acuerdo a su valor de aptitud, y asignar a cada individuo un valor de acuerdo a su nueva posición con respecto a la población. Por ejemplo, si se encuentra en la primer posición su valor será de 1, en la segunda ser 2, etc. El código utilizado es el siguiente:
 
 \begin{lstlisting}[language=Java]
 private void rankSelection() {
@@ -507,7 +577,7 @@ private void rankSelection() {
     
 \end{lstlisting}
 
-\subsubsection{Metodo de la ruleta}
+\subsubsection{Método de la ruleta}
 Este método de selección da a cada individuo dentro de la población una probabilidad de ser elegido de acuerdo a su valor de aptitud.
 
 
@@ -544,7 +614,7 @@ Este método de selección da a cada individuo dentro de la población una probabil
 \end{lstlisting}
 
 \subsubsection{Muestreo estocástico universal }
-Este método es una variación del método de la ruleta. Busca ser imparcial, ademas de tener una propagación minima \cite{baker1987}. 
+Este método es una variación del método de la ruleta. Busca ser imparcial, además de tener una propagación mínima \cite{baker1987}. 
 \begin{lstlisting}[language=Java]
     private void stochasticUniversalSelection() {
         matingPool.clear();
@@ -576,9 +646,36 @@ Este método es una variación del método de la ruleta. Busca ser imparcial, adema
 \end{lstlisting}
 \newpage
 
-\includegraphics[scale=0.5,angle=-90]{plot.eps}
+\section{Conclusiones y Recomendaciones}
+De acuerdo a los resultados obtenidos podemos concluir que la mejor configuración utilizando nuestro algoritmo seria la siguiente:
+
+\begin{center}
+	\begin{tabular}{| l | l | l | l |}
+	\hline
+	Método de Selección & Porcentaje de Mutación & Tamaño de Población & Numero de Generaciones \\ \hline
+	Torneo de 5 individuos & 1\% & 500 & 100 \\
+	\hline
+	\end{tabular}
+	\captionof{table}[Mejor configuración encontrada]{Mejor configuración.}
+\end{center}
+
+Sin embargo, no se descarta de que mas adelante se hagan mas pruebas. Esto debido a los resultados arrojados por el método de selección por ruleta.
+
+Aunque cada método de selección fue probado para verificar su funcionamiento, el método de la ruleta arrojo unos resultados que varían mucho en comparación a los demás métodos. Esto puede indicar que puede estar mal codificado, por lo que en un futuro se planea corregirlo. 
+
+Otro comportamiento inesperado es el de los porcentajes de mutación, ya que entre mas alto sea el porcentaje, peores individuos genera. Tal vez el problema esta en la manera en que asigna las nuevas posiciones, ya que en algunos casos la nueva posición es igual a la antigua. En un futuro se tratara de arreglar este comportamiento.
+
+También se pretende explorar nuevas formas de generar individuos, ya que la que se usa actualmente esta propensa a errores al momento de generar nueva población o mutar individuos, como ya se menciono antes. 
+
+Además se planea experimentar con nuevos métodos de cruza, como los propuestos por \cite{yu2002} y \cite{mittal2015}
+\cleardoublepage
+
+\section{Competencias desarrolladas y/o aplicadas}Las competencias desarrolladas durante este proyecto fueron cuatro:\begin{itemize}	\item Investigación	\item Desarrollo de software	\item Pensamiento crítico	\item Comunicación verbal y escrita\end{itemize}\subsection{Investigación}Al principio del proyecto la idea que se tenia acerca de un algoritmo genético era muy vaga, fue a través de la investigación y de la ayuda de los asesores que esta idea fue tomando forma.Tampoco se tenia muy claro cual era el objetivo final del proyecto. Fue a través de la investigación que se fueron descubriendo trabajos similares a este. Esto fue de gran ayuda para crear una idea general de que y como iba a desarrollarse este proyecto.\subsection{Desarrollo de software}Aunque ya se tenían conocimientos acerca de desarrollo de software, estos eran muy básicos. Fue a través del desarrollo de este trabajo que estos conocimientos se fueron ampliando.A través del desarrollo del algoritmo fue que los conocimientos acerca del lenguaje de programación Java fueron creciendo. Esto a través del descubrimiento de buenas practicas de programación, convenciones para la escritura de código y patrones de desarrollo.\subsection{Pensamiento crítico}Muchas veces durante el avance de un trabajo no podemos ver la cantidad de errores que estamos cometiendo debido a que no se es lo suficientemente autocrítico. El desarrollo de esta competencia permitió poder identificar los errores que se estaban cometiendo y arreglarlos, aunque esto significase empezar desde cero.\subsection{Comunicación verbal y escrita}La tarea de recolectar datos, entrevistarse con gente responsable de la generación de horarios, redacción de documentos y redacción de reportes requiere de excelentes habilidades de comunicación. Al principio del proyecto el no poder expresar con claridad lo que se necesitaba y cual era el objetivo de este trabajo trajo una serie de conflictos y malentendidos.Con el desarrollo de este proyecto estas habilidades fueron mejorando gradualmente y, aunque no están del todo desarrolladas, gracias a este proyecto el desarrollo de trabajos futuros será mas sencillo.
+
+
 
 \cleardoublepage
+
 \bibliographystyle{IEEEtran}
 \bibliography{/Users/alberto/Desktop/reporte/biblio/refer}
 

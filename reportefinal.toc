@@ -1,25 +1,38 @@
+\contentsline {section}{\hbox to\@tempdima {\hfil }Lista de Im\'agenes}{I}{section*.3}
+\contentsline {section}{\hbox to\@tempdima {\hfil }Lista de Tablas}{II}{section*.4}
 \contentsline {section}{\numberline {1}Justificaci\'on}{1}{section.1}
 \contentsline {section}{\numberline {2}Objetivos}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Objetivo General}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Objetivos Espec\IeC {\'\i }ficos}{2}{subsection.2.2}
 \contentsline {section}{\numberline {3}Problem\'atica a Resolver}{3}{section.3}
-\contentsline {section}{\numberline {4}Procedimiento y descripci\'on de las actividades realizadas}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}Obtenci\'on de datos}{4}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Ordenaci\'on de los datos}{4}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Desarrollo del algoritmo gen\'etico}{5}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Codificaci\'on de los individuos}{5}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Generaci\'on inicial de individuos}{5}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Parametros a evaluar}{6}{subsubsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4}Restricciones}{7}{subsubsection.4.3.4}
-\contentsline {subsubsection}{\numberline {4.3.5}Funci\'on Objetivo}{7}{subsubsection.4.3.5}
-\contentsline {section}{\numberline {5}Resultados}{9}{section.5}
-\contentsline {section}{\numberline {6}Anexo}{10}{section.6}
-\contentsline {subsection}{\numberline {6.1}Individuos}{10}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Inicializaci\'on}{10}{subsubsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.2}Codificaci\'on}{10}{subsubsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.3}Representacion de las horas}{11}{subsubsection.6.1.3}
-\contentsline {subsection}{\numberline {6.2}M\'etodos de selecci\'on}{13}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Torneo}{13}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Selecci\'on por rangos}{14}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Metodo de la ruleta}{15}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Muestreo estoc\'astico universal }{16}{subsubsection.6.2.4}
+\contentsline {section}{\numberline {4}Procedimiento y descripci\'on de las actividades realizadas}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Obtenci\'on de datos}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Ordenaci\'on de los datos}{5}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Desarrollo del algoritmo gen\'etico}{6}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Codificaci\'on de los individuos}{6}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Generaci\'on inicial de individuos}{6}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Par\'ametros a evaluar}{7}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Restricciones}{8}{subsubsection.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.5}Funci\'on Objetivo}{8}{subsubsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.6}Cruza}{9}{subsubsection.4.3.6}
+\contentsline {subsubsection}{\numberline {4.3.7}Mutaci\'on}{9}{subsubsection.4.3.7}
+\contentsline {subsection}{\numberline {4.4}Obtenci\'on de resultados}{10}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Obtenci\'on de tama\~no de poblaci\'on, numero de generaciones y m\'etodo de selecci\'on}{10}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Obtenci\'on del porcentaje de mutaci\'on}{10}{subsubsection.4.4.2}
+\contentsline {section}{\numberline {5}Resultados}{11}{section.5}
+\contentsline {section}{\numberline {6}Anexo}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Individuos}{14}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Inicializaci\'on}{14}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Codificaci\'on}{14}{subsubsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.3}Representaci\'on de las horas}{15}{subsubsection.6.1.3}
+\contentsline {subsection}{\numberline {6.2}M\'etodos de selecci\'on}{16}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Torneo}{16}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Selecci\'on por rangos}{17}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}M\'etodo de la ruleta}{18}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Muestreo estoc\'astico universal }{19}{subsubsection.6.2.4}
+\contentsline {section}{\numberline {7}Conclusiones y Recomendaciones}{20}{section.7}
+\contentsline {section}{\numberline {8}Competencias desarrolladas y/o aplicadas}{21}{section.8}
+\contentsline {subsection}{\numberline {8.1}Investigaci\'on}{21}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Desarrollo de software}{21}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Pensamiento cr\IeC {\'\i }tico}{21}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Comunicaci\'on verbal y escrita}{21}{subsection.8.4}

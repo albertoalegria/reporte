@@ -1,25 +1,38 @@
-\BOOKMARK [1][-]{section.1}{Justificaci\363n}{}% 1
-\BOOKMARK [1][-]{section.2}{Objetivos}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Objetivo General}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Objetivos Espec\355ficos}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Problem\341tica a Resolver}{}% 5
-\BOOKMARK [1][-]{section.4}{Procedimiento y descripci\363n de las actividades realizadas}{}% 6
-\BOOKMARK [2][-]{subsection.4.1}{Obtenci\363n de datos}{section.4}% 7
-\BOOKMARK [2][-]{subsection.4.2}{Ordenaci\363n de los datos}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.3}{Desarrollo del algoritmo gen\351tico}{section.4}% 9
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Codificaci\363n de los individuos}{subsection.4.3}% 10
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Generaci\363n inicial de individuos}{subsection.4.3}% 11
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Parametros a evaluar}{subsection.4.3}% 12
-\BOOKMARK [3][-]{subsubsection.4.3.4}{Restricciones}{subsection.4.3}% 13
-\BOOKMARK [3][-]{subsubsection.4.3.5}{Funci\363n Objetivo}{subsection.4.3}% 14
-\BOOKMARK [1][-]{section.5}{Resultados}{}% 15
-\BOOKMARK [1][-]{section.6}{Anexo}{}% 16
-\BOOKMARK [2][-]{subsection.6.1}{Individuos}{section.6}% 17
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Inicializaci\363n}{subsection.6.1}% 18
-\BOOKMARK [3][-]{subsubsection.6.1.2}{Codificaci\363n}{subsection.6.1}% 19
-\BOOKMARK [3][-]{subsubsection.6.1.3}{Representacion de las horas}{subsection.6.1}% 20
-\BOOKMARK [2][-]{subsection.6.2}{M\351todos de selecci\363n}{section.6}% 21
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Torneo}{subsection.6.2}% 22
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Selecci\363n por rangos}{subsection.6.2}% 23
-\BOOKMARK [3][-]{subsubsection.6.2.3}{Metodo de la ruleta}{subsection.6.2}% 24
-\BOOKMARK [3][-]{subsubsection.6.2.4}{Muestreo estoc\341stico universal }{subsection.6.2}% 25
+\BOOKMARK [1][-]{section*.3}{Lista de Im\341genes}{}% 1
+\BOOKMARK [1][-]{section*.4}{Lista de Tablas}{}% 2
+\BOOKMARK [1][-]{section.1}{Justificaci\363n}{}% 3
+\BOOKMARK [1][-]{section.2}{Objetivos}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Objetivo General}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Objetivos Espec\355ficos}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Problem\341tica a Resolver}{}% 7
+\BOOKMARK [1][-]{section.4}{Procedimiento y descripci\363n de las actividades realizadas}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Obtenci\363n de datos}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Ordenaci\363n de los datos}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Desarrollo del algoritmo gen\351tico}{section.4}% 11
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Codificaci\363n de los individuos}{subsection.4.3}% 12
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Generaci\363n inicial de individuos}{subsection.4.3}% 13
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Par\341metros a evaluar}{subsection.4.3}% 14
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Restricciones}{subsection.4.3}% 15
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Funci\363n Objetivo}{subsection.4.3}% 16
+\BOOKMARK [3][-]{subsubsection.4.3.6}{Cruza}{subsection.4.3}% 17
+\BOOKMARK [3][-]{subsubsection.4.3.7}{Mutaci\363n}{subsection.4.3}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Obtenci\363n de resultados}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Obtenci\363n de tama\361o de poblaci\363n, numero de generaciones y m\351todo de selecci\363n}{subsection.4.4}% 20
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Obtenci\363n del porcentaje de mutaci\363n}{subsection.4.4}% 21
+\BOOKMARK [1][-]{section.5}{Resultados}{}% 22
+\BOOKMARK [1][-]{section.6}{Anexo}{}% 23
+\BOOKMARK [2][-]{subsection.6.1}{Individuos}{section.6}% 24
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Inicializaci\363n}{subsection.6.1}% 25
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Codificaci\363n}{subsection.6.1}% 26
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Representaci\363n de las horas}{subsection.6.1}% 27
+\BOOKMARK [2][-]{subsection.6.2}{M\351todos de selecci\363n}{section.6}% 28
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Torneo}{subsection.6.2}% 29
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Selecci\363n por rangos}{subsection.6.2}% 30
+\BOOKMARK [3][-]{subsubsection.6.2.3}{M\351todo de la ruleta}{subsection.6.2}% 31
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Muestreo estoc\341stico universal }{subsection.6.2}% 32
+\BOOKMARK [1][-]{section.7}{Conclusiones y Recomendaciones}{}% 33
+\BOOKMARK [1][-]{section.8}{Competencias desarrolladas y/o aplicadas}{}% 34
+\BOOKMARK [2][-]{subsection.8.1}{Investigaci\363n}{section.8}% 35
+\BOOKMARK [2][-]{subsection.8.2}{Desarrollo de software}{section.8}% 36
+\BOOKMARK [2][-]{subsection.8.3}{Pensamiento cr\355tico}{section.8}% 37
+\BOOKMARK [2][-]{subsection.8.4}{Comunicaci\363n verbal y escrita}{section.8}% 38
